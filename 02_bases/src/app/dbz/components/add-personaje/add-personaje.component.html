@@ -1,0 +1,11 @@
+<form class="row" (ngSubmit)="emitCharacter()">
+
+    <!-- con la directiva ngModel quiero tomar los valores ingresados en el input -->
+    <input name="name" type="text" [(ngModel)]="character.name" class="form-control mb-2" placeholder="Nombre del Personaje">
+    <input name="power" type="number" [(ngModel)]="character.power" class="form-control mb-2" placeholder="Poder">
+
+    <button class="btn btn-primary" type="submit">Agregar</button>
+
+    <!-- {{character | json}} -->
+    
+</form>

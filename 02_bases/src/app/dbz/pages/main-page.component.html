@@ -1,0 +1,21 @@
+<h1>DBZ Personajes</h1>
+<hr>
+
+<div class="row">
+    <div class="col">
+        
+        <!-- escucho el evento onDeletId(del listComponent)y ejecuto el metodo onDeleteVharter(index) del mainComponent -->
+        <dbz-list (onDeleteId)="onDeleteCharacter($event)" [characterList]="characters"></dbz-list>
+
+    </div>
+
+    <div class="col">
+
+        <!-- De la lista de heroes, este es el observable ya que me crea los heroes que vere en la lista
+        y una vez que doy subit tengo que enviarlo al main page. Comunicacion de hijo a padre(emision) -->
+
+        <!-- (onNewCharacter) hace referencia al método del hijo y "onNewCharacter($event)" al método del padre, con event escucho la emision del hijo y la capturo. -->
+        <dbz-add-personaje (onNewCharacter)="onNewCharacter($event)" ></dbz-add-personaje>
+
+    </div>
+</div>
