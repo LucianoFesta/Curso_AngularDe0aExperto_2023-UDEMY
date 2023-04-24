@@ -1,0 +1,32 @@
+<h2>Países</h2>
+<hr>
+
+<!-- Para utilizar rutas, en el module de componente importamos el Router Module. routerLink es para ingresar la ruta, routerLinkActive para que quede seleccionado donde estoy y el linkActiveOptions true es para que lo haga cuanod es la ruta de manera exacta. -->
+<ul class="list-group">
+    <!-- <li routerLink="" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="list-group-item">
+        Home Page
+    </li>
+
+    <li routerLink="about" routerLinkActive="active" class="list-group-item">
+        About Page
+    </li>
+    
+    <li routerLink="contact" routerLinkActive="active" class="list-group-item">
+        Contact Page
+    </li> -->
+
+    <li routerLink="countries/by-capital" routerLinkActive="active" class="list-group-item">
+        Por capital
+    </li>
+
+    <li routerLink="countries/by-country" routerLinkActive="active" class="list-group-item">
+        Por país
+    </li>
+
+    <li routerLink="countries/by-region" routerLinkActive="active" class="list-group-item">
+        Por región
+    </li>
+</ul>
