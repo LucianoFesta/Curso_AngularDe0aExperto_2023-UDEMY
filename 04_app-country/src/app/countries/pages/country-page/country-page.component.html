@@ -6,6 +6,9 @@
 
 
 <div *ngIf="country; else loading">
+
+    <shared-loading-spinner *ngIf="isLoading" ></shared-loading-spinner>
+
     <div class="row">
         <div class="col-12">
             <h2>País: <strong>{{ country.name.common }}</strong></h2>

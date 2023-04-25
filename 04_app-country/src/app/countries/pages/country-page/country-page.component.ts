@@ -12,6 +12,8 @@ export class CountryPageComponent implements OnInit{
 
   public country?: Country; //Como puede ser null, y cuando la pag se renderiza al inico y esta vacío, le pornemos el ?.
 
+  public isLoading = false;
+
   //capturamos el el id de la url.
   constructor(private activatedRoute: ActivatedRoute, 
               private countryServices: CountriesService,
@@ -19,12 +21,16 @@ export class CountryPageComponent implements OnInit{
 
 
   ngOnInit(): void {
+
+    this.isLoading = true;
+
     this.activatedRoute.params.pipe(
       switchMap( ({id}) => this.countryServices.searchCountryByAlphaCode(id))) //desestructuro el objeto params, saco el id.
         .subscribe( country => { 
           
           if( !country ){ return this.router.navigateByUrl('');} //En caso de que country sea nulo, redirigimos a una página.
 
+          this.isLoading = false;
           return this.country = country;
         
       })

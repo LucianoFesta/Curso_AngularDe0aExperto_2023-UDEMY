@@ -4,13 +4,14 @@
 <div class="row">
     <div class="col">
         <!-- (onValue) es un evento personalizado que llama a la funcion searchBycapital($event) paso info del hijo al padre (output) -->
-        <shared-search-box placeholder="Buscar por capital" (onValue)="searchByCapital($event)"></shared-search-box>
+        <shared-search-box [initialValue]="initialValue" placeholder="Buscar por capital" (onDebounce)="searchByCapital($event)" (onValue)="searchByCapital($event)"></shared-search-box>
     </div>
 </div>
 
 <div class="row">
     <div class="col">
         <hr>
+        <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
         <countries-table [countries]="countries" ></countries-table>
     </div>
 </div>
