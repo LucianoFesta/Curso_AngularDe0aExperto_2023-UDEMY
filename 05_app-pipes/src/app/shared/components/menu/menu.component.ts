@@ -39,7 +39,8 @@ export class MenuComponent {
             items: [
               {
                 label: 'Otro Elemento',
-                icon: 'pi pi-globe'
+                icon: 'pi pi-globe',
+                routerLink: 'custom'
               }
             ]
           }
