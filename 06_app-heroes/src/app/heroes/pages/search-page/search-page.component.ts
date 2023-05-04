@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { HeroesService } from '../../services/heroes.service';
+import { FormControl } from '@angular/forms';
+import { Hero } from '../../interfaces/hero.interface';
+import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-search-page',
@@ -7,5 +11,36 @@ import { Component } from '@angular/core';
   ]
 })
 export class SearchPageComponent {
+
+  public searchInput = new FormControl('');
+  public heroes: Hero[] = [];
+  public selectedHero?: Hero;
+
+  constructor( private heroesService: HeroesService ){ }
+
+  searchHero() {
+
+    const value:string = this.searchInput.value || '';
+    
+    this.heroesService.getSuggestions( value )
+      .subscribe( heroes => this.heroes = heroes);
+
+  }
+  
+
+  onSelectedOption( event: MatAutocompleteSelectedEvent ):void { //MatAuto... es el tipo de dato recibido segun la documentacion.
+    //a travez del (optionSelected) del form (opcion selecionada) creamos un metodo para que, en el input del buscador se vea la opcion seleccionada.
+    
+    if( !event.option.value ) {
+
+      this.selectedHero = undefined;
+      return;
+    }
+
+    const hero: Hero = event.option.value; //Rcibo el heroe
+    this.searchInput.setValue( hero.superhero ) //Establezco el valor del searchInput. Para que al seleccionar una busqueda quede en el input.
+    
+    this.selectedHero = hero;
+  }
 
 }
