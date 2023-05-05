@@ -12,7 +12,7 @@ import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 })
 export class SearchPageComponent {
 
-  public searchInput = new FormControl('');
+  public searchInput = new FormControl(''); //Input o componente reactivo.
   public heroes: Hero[] = [];
   public selectedHero?: Hero;
 
