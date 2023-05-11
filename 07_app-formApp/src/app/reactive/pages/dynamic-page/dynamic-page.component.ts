@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormArray, FormControl } from '@angular/forms';
+import { ValidatorsService } from 'src/app/shared/services/validators.service';
 
 @Component({
   templateUrl: './dynamic-page.component.html',
@@ -18,7 +19,10 @@ export class DynamicPageComponent {
 
   public newFavourite: FormControl = new FormControl('', Validators.required); //Formulario para agregar al input (componente reactivo);
 
-  constructor( private fb:FormBuilder ){}
+  constructor( 
+    private fb:FormBuilder,
+    private validatorsService: ValidatorsService
+  ){}
 
 
   get favouriteGames() {
@@ -28,7 +32,7 @@ export class DynamicPageComponent {
 
   isValidField( field:string ):boolean | null {
 
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched; //Devuelve true si existen errores y el campo ha sido tocado.
+    return this.validatorsService.isValidField(this.myForm,field); //Devuelve true si existen errores y el campo ha sido tocado.
   }
 
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidatorsService } from 'src/app/shared/services/validators.service';
 
 @Component({
   templateUrl: './basic-page.component.html',
@@ -15,7 +16,10 @@ export class BasicPageComponent implements OnInit {
   // });
 
   //Tambien podemos crear un formulario con FORMBUILDER
-  constructor( private fb:FormBuilder ){}
+  constructor( 
+    private fb:FormBuilder,
+    private validatorsService: ValidatorsService 
+  ){}
 
   ngOnInit(): void {
     //this.myForm.reset({ name: 'Camiseta Umbro', price: 25000, inStorage: 10 })
@@ -30,7 +34,7 @@ export class BasicPageComponent implements OnInit {
   
   isValidField( field:string ):boolean | null {
 
-    return this.myForm.controls[field].errors && this.myForm.controls[field].touched; //Devuelve true si existen errores y el campo ha sido tocado.
+    return this.validatorsService.isValidField(this.myForm,field); //Devuelve true si existen errores y el campo ha sido tocado.
   }
 
   getFieldError( field:string ):string | null{
